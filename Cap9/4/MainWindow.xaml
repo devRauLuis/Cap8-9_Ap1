@@ -1,0 +1,44 @@
+﻿<Window
+        x:Class="_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_4"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Window.Resources>
+        <ObjectDataProvider
+                x:Key="enumValues"
+                MethodName="GetValues"
+                ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Neumatico" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Margin="15,10">
+            <Label>Neumaticos: </Label>
+            <ComboBox
+                    x:Name="CmbNeumaticos"
+                    ItemsSource="{Binding Source={StaticResource enumValues}}"
+                    SelectionChanged="OnCMBSelectionChanged" />
+
+
+            <StackPanel
+                    Margin="0,10,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                <TextBlock
+                        x:Name="SelectedNeumatico"
+                        FontSize="50"
+                        FontWeight="Bold" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
